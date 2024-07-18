@@ -311,7 +311,8 @@ def RenderSudoku(sudoku):
 
 
 if __name__ == "__main__":
-    sudokuToSolve = ReadFile("example.txt")
+    file = input("Enter filename of sudoku: ")
+    sudokuToSolve = ReadFile(file)
     if sudokuToSolve != 0:
         Solve(sudokuToSolve)
         RenderSudoku(sudokuToSolve)
