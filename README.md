@@ -21,3 +21,25 @@ To use the script correctly you have to put the sudoku you want to solve as a .t
 
 Then run the script with `python sudokusolver.py` and enter the filename when prompted and press enter.
 When the script is done you should have the solved sudoku rendered into the `out.txt` file in the same directory.
+
+```
+╔═╤═╤═╦═╤═╤═╦═╤═╤═╗
+║1│4│3║6│8│5║2│9│7║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║8│5│7║1│9│2║6│3│4║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║9│2│6║3│4│7║1│5│8║
+╠═╪═╪═╬═╪═╪═╬═╪═╪═╣
+║4│6│2║9│3│8║5│7│1║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║3│1│5║7│6│4║8│2│9║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║7│9│8║2│5│1║4│6│3║
+╠═╪═╪═╬═╪═╪═╬═╪═╪═╣
+║6│8│1║5│7│3║9│4│2║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║2│7│9║4│1│6║3│8│5║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║5│3│4║8│2│9║7│1│6║
+╚═╧═╧═╩═╧═╧═╩═╧═╧═╝
+```
