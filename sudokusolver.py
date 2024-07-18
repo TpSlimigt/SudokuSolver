@@ -1,4 +1,4 @@
-# Alternativt ha en mapp som man lägger sudoku i
+# Alternatively, have a folder in which you put sudoku
 def ReadFile(fileName):
     path = "./{}".format(fileName)
     sudoku = []
@@ -44,9 +44,8 @@ def Solve(sudoku):
         for col in range(9):
             if sudoku[row][col] == "0":  # Empty cell
                 for num in range(1, 10):  # Try numbers 1 to 9
-                    if CheckIsValid(sudoku, row, col, num):
+                    if CheckIsValid(sudoku, row, col, str(num)):
                         sudoku[row][col] = str(num)
-
                         if Solve(sudoku):
                             return True
                         sudoku[row][col] = "0"  # Backtrack
@@ -74,7 +73,7 @@ def Solve(sudoku):
 
         numbers.pop()
 
-    return False """
+    return False
 
 
 # Looks for all the empty cells and returns the coordinates
@@ -102,7 +101,6 @@ def CheckForPossibleNumbers(sudoku, coordinate):
     row = CheckRow(sudoku, coordinate)
     col = CheckCol(sudoku, coordinate)
     block = CheckBlock(sudoku, coordinate)
-    # print(row, col, block)
 
     for r in row:
         if r not in occupiedNumbers:
@@ -155,6 +153,7 @@ def CheckBlock(sudoku, coordinate):
 # Gets the value of given cell
 def CheckCell(sudoku, coordinate):
     return sudoku[coordinate[1]][coordinate[0]]
+ """
 
 
 # Renders the sudoku to a file
@@ -279,9 +278,6 @@ def RenderSudoku(sudoku):
         elif row in numberRow:
             currentSudokuRow = sudoku[sudokuRow]
             sudokuRow += 1
-            # randomList = []  # Replace with sudoku data
-            # for _ in range(9):
-            #     randomList.append(str(random.randint(1, 9)))
             newRow.append(verticalBlock)
             newRow.append(currentSudokuRow[0])
             newRow.append(vertical)
@@ -315,15 +311,7 @@ def RenderSudoku(sudoku):
 
 
 if __name__ == "__main__":
-    # file = input("Enter file to solve: ")
     sudokuToSolve = ReadFile("example.txt")
     if sudokuToSolve != 0:
-        # zeroPositions = CheckForZero(sudokuToSolve)
-        # depth = len(zeroPositions) - 1
-        # print(depth + 1)
-        if Solve(sudokuToSolve):
-            for row in sudokuToSolve:
-                row
-
-        # RenderSudoku(solution)
-    # print(sudokuToSolve)
+        Solve(sudokuToSolve)
+        RenderSudoku(sudokuToSolve)
