@@ -1,4 +1,4 @@
-# Alternatively, have a folder in which you put sudoku
+# Alternatively, have a folder in which you put the sudoku
 def ReadFile(fileName):
     path = "./{}".format(fileName)
     sudoku = []
@@ -18,65 +18,25 @@ def ReadFile(fileName):
     return sudoku
 
 
-def CheckIsValid(board, row, col, num):
-    # Check if num is not in the current row
-    for x in range(9):
-        if board[row][x] == num:
-            return False
-
-    # Check if num is not in the current column
-    for x in range(9):
-        if board[x][col] == num:
-            return False
-
-    # Check if num is not in the current 3x3 box
-    start_row, start_col = 3 * (row // 3), 3 * (col // 3)
-    for i in range(3):
-        for j in range(3):
-            if board[i + start_row][j + start_col] == num:
-                return False
-
-    return True
-
-
+# The solve function, using recursion
 def Solve(sudoku):
     for row in range(9):
-        for col in range(9):
-            if sudoku[row][col] == "0":  # Empty cell
-                for num in range(1, 10):  # Try numbers 1 to 9
-                    if CheckIsValid(sudoku, row, col, str(num)):
-                        sudoku[row][col] = str(num)
-                        if Solve(sudoku):
+        for col in range(9):  # Loops through all the cells
+            if sudoku[row][col] == "0":  # If cell is empty
+                nums = CheckForPossibleNumbers(
+                    sudoku, (col, row)
+                )  # Look for possible numbers
+                if nums:  # If there are none, return false, something is wrong
+                    for num in nums:
+                        sudoku[row][col] = num  # Set cell to possible number
+                        if Solve(sudoku):  # Check if sudoku is solved
                             return True
                         sudoku[row][col] = "0"  # Backtrack
                 return False
     return True
 
 
-""" def Solve(sudoku, zeroPositions, numbers=[]):
-    # Base case, sudoku solved. All blank spaces has numbers.
-    if len(numbers) == len(zeroPositions):
-        return print(numbers)
-
-    index = len(numbers)
-
-    # Check all the possible numbers at the cell.
-    possibleNumbers = CheckForPossibleNumbers(sudoku, zeroPositions[index])
-    if not possibleNumbers or len(possibleNumbers) == 0:
-        return False
-
-    for pNum in possibleNumbers:
-        numbers.append(pNum)
-
-        if Solve(sudoku, zeroPositions, numbers):
-            return True
-
-        numbers.pop()
-
-    return False
-
-
-# Looks for all the empty cells and returns the coordinates
+""" # Looks for all the empty cells and returns the coordinates
 def CheckForZero(sudoku):
     x = -1
     y = -1
@@ -90,7 +50,7 @@ def CheckForZero(sudoku):
             if num == "0":
                 zeroPositions.append((x, y))
         x = -1
-    return zeroPositions
+    return zeroPositions """
 
 
 # Checks the possible numbers for a given cell
@@ -101,6 +61,10 @@ def CheckForPossibleNumbers(sudoku, coordinate):
     row = CheckRow(sudoku, coordinate)
     col = CheckCol(sudoku, coordinate)
     block = CheckBlock(sudoku, coordinate)
+
+    # If there are no possible numbers found, return false
+    if row == "0" and col == "0" and block == "0":
+        return False
 
     for r in row:
         if r not in occupiedNumbers:
@@ -153,7 +117,6 @@ def CheckBlock(sudoku, coordinate):
 # Gets the value of given cell
 def CheckCell(sudoku, coordinate):
     return sudoku[coordinate[1]][coordinate[0]]
- """
 
 
 # Renders the sudoku to a file
