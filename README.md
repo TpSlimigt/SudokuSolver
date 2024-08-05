@@ -5,7 +5,7 @@ I wanted to make a script that can solve a sudoku puzzle with the help of recurs
 
 ## How to use
 
-To use the script correctly you have to put the sudoku you want to solve as a .txt file in the same folder as the script. The file should contain the sudoku where empty spaces are represented as a 0 and each row is separated into a new line, like this:
+To use the script correctly you have to put the sudoku you want to solve as a .txt file in the same directory as the script. The file should contain the sudoku where empty spaces are represented as a 0 and each row is separated into a new line, like this:
 
 ```
 043080007
