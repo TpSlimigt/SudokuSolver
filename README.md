@@ -1,7 +1,7 @@
 # Sudoku Solver Script
 
 A python script for solving sudokus.
-I wanted to make a script that can solve a sudoku puzzle with the help of recursion functions.
+I wanted to make a script that can solve a sudoku puzzle with the help of a recursion function.
 
 ## How to use
 
