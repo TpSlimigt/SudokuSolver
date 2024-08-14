@@ -1,4 +1,7 @@
-# Alternatively, have a folder in which you put the sudoku
+# TODO: Alternatively, have a folder in which you put the sudoku
+
+
+# Reads the file and converts it to a list of lists
 def ReadFile(fileName):
     path = "./{}".format(fileName)
     sudoku = []
