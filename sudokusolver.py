@@ -1,3 +1,5 @@
+import sys
+
 # TODO: Alternatively, have a folder in which you put the sudoku
 
 
@@ -282,5 +284,6 @@ if __name__ == "__main__":
     file = input("Enter filename of sudoku: ")
     sudokuToSolve = ReadFile(file)
     if sudokuToSolve != 0:
-        Solve(sudokuToSolve)
+        if str(sys.argv[1]).lower() != "nosolve":
+            Solve(sudokuToSolve)
         RenderSudoku(sudokuToSolve)

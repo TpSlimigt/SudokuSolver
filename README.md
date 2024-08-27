@@ -43,3 +43,27 @@ When the script is done you should have the solved sudoku rendered into the `out
 ║5│3│4║8│2│9║7│1│6║
 ╚═╧═╧═╩═╧═╧═╩═╧═╧═╝
 ```
+
+If you only want to use the render function to render an unsolved sudoku into the `out.txt` file, use the `nosolve` (not case sensitive) argument when you run the script like this: `python sudokusolver.py nosolve`.
+
+```
+╔═╤═╤═╦═╤═╤═╦═╤═╤═╗
+║0│4│3║0│8│0║0│0│7║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║0│5│7║0│9│0║6│0│0║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║0│0│0║0│4│0║1│0│8║
+╠═╪═╪═╬═╪═╪═╬═╪═╪═╣
+║4│6│2║0│3│8║5│0│1║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║0│1│0║7│0│4║0│2│9║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║0│0│0║0│0│1║0│6│3║
+╠═╪═╪═╬═╪═╪═╬═╪═╪═╣
+║6│0│1║0│7│3║0│4│2║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║0│7│0║4│0│6║3│0│5║
+╟─┼─┼─╫─┼─┼─╫─┼─┼─╢
+║5│3│0║8│2│9║7│0│6║
+╚═╧═╧═╩═╧═╧═╩═╧═╧═╝
+```
