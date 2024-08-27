@@ -2,7 +2,7 @@
 
 
 # Reads the file and converts it to a list of lists
-def ReadFile(fileName):
+def ReadFile(fileName: str) -> list[list[str]]:
     path = "./{}".format(fileName)
     sudoku = []
     try:
@@ -22,7 +22,7 @@ def ReadFile(fileName):
 
 
 # The solve function, using recursion
-def Solve(sudoku):
+def Solve(sudoku: list[list[str]]) -> bool:
     for row in range(9):
         for col in range(9):  # Loops through all the cells
             if sudoku[row][col] == "0":  # If cell is empty
@@ -40,7 +40,7 @@ def Solve(sudoku):
 
 
 """ # Looks for all the empty cells and returns the coordinates
-def CheckForZero(sudoku):
+def CheckForZero(sudoku: list[list[str]]) -> tuple[int, int]:
     x = -1
     y = -1
 
@@ -57,7 +57,9 @@ def CheckForZero(sudoku):
 
 
 # Checks the possible numbers for a given cell
-def CheckForPossibleNumbers(sudoku, coordinate):
+def CheckForPossibleNumbers(
+    sudoku: list[list[str]], coordinate: tuple[int, int]
+) -> set[str] | bool:
     possibleNumbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
     occupiedNumbers = []
 
@@ -83,7 +85,7 @@ def CheckForPossibleNumbers(sudoku, coordinate):
 
 
 # Checks possible numbers on a cell's row
-def CheckRow(sudoku, coordinate):
+def CheckRow(sudoku: list[list[str]], coordinate: tuple[int, int]) -> list[str]:
     occupiedNumbers = []
     for num in sudoku[coordinate[1]]:
         if num != "0":
@@ -92,7 +94,7 @@ def CheckRow(sudoku, coordinate):
 
 
 # Checks possible numbers on a cell's column
-def CheckCol(sudoku, coordinate):
+def CheckCol(sudoku: list[list[str]], coordinate: tuple[int, int]) -> list[str]:
     occupiedNumbers = []
     col = coordinate[0]
     for row in range(9):
@@ -103,7 +105,7 @@ def CheckCol(sudoku, coordinate):
 
 
 # Checks possible numbers on a cell's block
-def CheckBlock(sudoku, coordinate):
+def CheckBlock(sudoku: list[list[str]], coordinate: tuple[int, int]) -> list[str]:
     occupiedNumbers = []
     currentBlock = (int((coordinate[0]) / 3), int((coordinate[1]) / 3))
     currentBlockStartCell = (currentBlock[0] * 3, currentBlock[1] * 3)
@@ -118,12 +120,12 @@ def CheckBlock(sudoku, coordinate):
 
 
 # Gets the value of given cell
-def CheckCell(sudoku, coordinate):
+def CheckCell(sudoku: list[list[str]], coordinate: tuple[int, int]) -> str:
     return sudoku[coordinate[1]][coordinate[0]]
 
 
 # Renders the sudoku to a file
-def RenderSudoku(sudoku):
+def RenderSudoku(sudoku: list[list[str]]) -> None:
     topLeftCorner = "╔"
     bottomLeftCorner = "╚"
     topRightCorner = "╗"
